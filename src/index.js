@@ -30,29 +30,38 @@ class CalculatorApp {
     this.drawer.renderLayout();
 
     this.calculator.availableCalculateOperations.forEach((operation) => {
-      this.drawer.appendButton(operation, () => {
-        this.calculator.processCalculateOperation(operation);
-        this.snapshotState.pushState(this.calculator.state.getValue());
-      });
+      this.drawer.appendButton(
+        operation,
+        () => {
+          this.calculator.processCalculateOperation(operation);
+          this.snapshotState.pushState(this.calculator.state.getValue());
+        },
+        "calculate"
+      );
     });
 
     this.calculator.availableModifyOperations.forEach((operation) => {
       this.drawer.appendButton(
         operation,
-        this.calculator.processModifyOperation
+        this.calculator.processModifyOperation,
+        "calculate"
       );
     });
 
-    this.drawer.appendButton("C", this.calculator.processBackspace);
-    this.drawer.appendButton("AC", this.calculator.clear);
-    this.drawer.appendButton("Undo", () => {
-      const lastState = this.snapshotState.popState();
-      if (lastState) {
-        this.calculator.changeState(lastState);
-      } else {
-        this.calculator.clear();
-      }
-    });
+    this.drawer.appendButton("C", this.calculator.processBackspace, "general");
+    this.drawer.appendButton("AC", this.calculator.clear, "general");
+    this.drawer.appendButton(
+      "Undo",
+      () => {
+        const lastState = this.snapshotState.popState();
+        if (lastState) {
+          this.calculator.changeState(lastState);
+        } else {
+          this.calculator.clear();
+        }
+      },
+      "general"
+    );
 
     [1, 2, 3, 4, 5, 6, 7, 8, 9, 0].forEach((number) => {
       this.drawer.appendButton(number, this.calculator.processNumber);

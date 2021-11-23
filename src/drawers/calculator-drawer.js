@@ -1,11 +1,12 @@
 class CalculatorDrawer {
   /**
-   * 
-   * @param {string} title 
-   * @param {Function} onClick 
+   *
+   * @param {string} title
+   * @param {Function} onClick
+   * @param {"calculate"|"general"|"number"} type
    * @returns {void}
    */
-  appendButton(title, onClick) {
+  appendButton(title, onClick, type = "number") {
     throw new Error("Render function for Button is not implemented");
   }
 
@@ -17,8 +18,8 @@ class CalculatorDrawer {
   }
 
   /**
-   * 
-   * @param {string} value 
+   *
+   * @param {string} value
    * @returns {void}
    */
   setInputValue(value) {
