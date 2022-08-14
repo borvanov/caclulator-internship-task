@@ -9,4 +9,5 @@ To achieve all the [requirements](https://docs.google.com/document/d/1j8DnTnRSNo
 ## Scripts
 
 `yarn start` - Webpack serve command that starts a development server
+
 `yarn build` - Webpack build script
